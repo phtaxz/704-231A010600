@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu - 704-231A010600</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS NỘI BỘ - ABOUT */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f2f5; color: #333; }
+        a { text-decoration: none; color: inherit; }
+
+        /* SIDEBAR (Copy từ index) */
+        .dashboard-wrapper { display: flex; min-height: 100vh; }
+        .sidebar {
+            width: 280px; background: linear-gradient(180deg, #2c3e50 0%, #1a252f 100%);
+            color: white; padding: 30px 20px; display: flex; flex-direction: column;
+            position: fixed; height: 100vh; left: 0; top: 0; z-index: 100;
+        }
+        .user-profile { text-align: center; margin-bottom: 30px; }
+        .avatar {
+            width: 100px !important; height: 100px !important; border-radius: 50%;
+            border: 3px solid #3498db; object-fit: cover; margin: 0 auto 15px auto; display: block; background: white;
+        }
+        .user-profile h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; color: white; }
+        .user-profile p { font-size: 0.9rem; color: #bdc3c7; }
+
+        .side-menu { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+        .side-menu a {
+            color: #bdc3c7 !important;
+            padding: 12px 20px; border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; font-size: 0.95rem; text-decoration: none !important;
+        }
+        .side-menu a:hover, .side-menu a.active { background-color: #3498db; color: white !important; transform: translateX(5px); }
+        .side-menu i { width: 25px; margin-right: 10px; text-align: center; }
+        
+        .main-content { margin-left: 280px; flex: 1; display: flex; flex-direction: column; }
+        .top-header { background: rgba(255, 255, 255, 0.95); padding: 20px 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 90; }
+        .content-body { padding: 40px; }
+
+        /* ABOUT SPECIFIC CSS */
+        .about-container { display: grid; grid-template-columns: 350px 1fr; gap: 30px; }
+        .about-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        
+        .profile-header-img {
+            height: 180px;
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            border-radius: 15px 15px 0 0; position: relative;
+        }
+        .profile-intro { padding: 0; overflow: hidden; text-align: center; }
+        .profile-content { padding: 20px; margin-top: -80px; position: relative; z-index: 2; }
+        .big-avatar {
+            width: 140px; height: 140px; border-radius: 50%; border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); object-fit: cover; background: white;
+        }
+        .role { color: #1abc9c; font-weight: bold; margin: 10px 0; }
+        .social-links a {
+            display: inline-block; width: 40px; height: 40px; line-height: 40px;
+            background: #f0f2f5; border-radius: 50%; color: #333; margin: 0 5px; transition: 0.3s;
+        }
+        .social-links a:hover { background: #3498db; color: white; }
+        .goal-list li { margin-bottom: 10px; color: #555; list-style: none; }
+
+        @media (max-width: 992px) {
+            .sidebar { width: 100%; height: auto; position: relative; flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 20px; }
+            .main-content { margin-left: 0; }
+            .side-menu { display: none; }
+            .avatar { width: 50px !important; height: 50px !important; margin: 0 10px 0 0; }
+            .user-profile { display: flex; align-items: center; margin: 0; text-align: left; }
+            .user-profile p { display: none; }
+            .about-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <img src="images/avatar.jpg" alt="Avatar" class="avatar" onerror="this.src='https://via.placeholder.com/150'">
+                <h3>Phạm Hồng Tuấn Anh</h3>
+                <p>MSSV: 231A010600</p>
+            </div>
+            <nav class="side-menu">
+                <a href="index.html"><i class="fas fa-home"></i> Trang chủ</a>
+                <a href="about.html" class="active"><i class="fas fa-user"></i> Giới thiệu</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Liên hệ</a>
+                <div style="margin: 15px 20px; border-top: 1px solid rgba(255,255,255,0.1);"></div>
+                <p style="padding: 0 20px; color: #7f8c8d; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 5px;">Học tập</p>
+                <a href="baitap20.html"><i class="fas fa-check-double"></i> KQ Bài 20</a>
+                <a href="baitap21.html"><i class="fas fa-code"></i> Giải Bài 21</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <h2><i class="fas fa-info-circle" style="color: #3498db;"></i> Hồ sơ cá nhân</h2>
+            </header>
+            
+            <section class="content-body">
+                <div class="about-container">
+                    <div class="about-card profile-intro">
+                        <div class="profile-header-img"></div>
+                        <div class="profile-content">
+                            <img src="images/avatar.jpg" alt="Me" class="big-avatar" onerror="this.src='https://via.placeholder.com/150'">
+                            <h3>Phạm Hồng Tuấn Anh</h3>
+                            <p class="role">Sinh viên An toàn thông tin</p>
+                            <p>"Bảo mật là ưu tiên hàng đầu."<br>Sinh viên năm 3, khoa CNTT - ĐH Văn Hiến.</p>
+                            <div class="social-links">
+                                <a href="https://github.com/phtaxz" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://www.facebook.com/tuananhh.phta" target="_blank"><i class="fab fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-details">
+                        <div class="about-card">
+                            <h4><i class="fas fa-graduation-cap"></i> Học vấn</h4>
+                            <ul class="goal-list" style="margin-top: 10px;">
+                                <li><strong>Trường:</strong> Đại học Văn Hiến (VHU)</li>
+                                <li><strong>Chuyên ngành:</strong> An toàn thông tin</li>
+                                <li><strong>Năm học:</strong> Năm 3 (2023 - 2027)</li>
+                            </ul>
+                        </div>
+                        <div class="about-card" style="margin-top: 20px;">
+                            <h4><i class="fas fa-bullseye"></i> Định hướng</h4>
+                            <p style="color: #555;">Trở thành Chuyên gia Pentester hoặc Security Analyst.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

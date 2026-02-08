@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đáp án Trắc nghiệm - Bài 20</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS NỘI BỘ - BAITAP20 */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f2f5; color: #333; }
+        a { text-decoration: none; color: inherit; }
+
+        /* SIDEBAR */
+        .dashboard-wrapper { display: flex; min-height: 100vh; }
+        .sidebar {
+            width: 280px; background: linear-gradient(180deg, #2c3e50 0%, #1a252f 100%);
+            color: white; padding: 30px 20px; display: flex; flex-direction: column;
+            position: fixed; height: 100vh; left: 0; top: 0; z-index: 100;
+        }
+        .user-profile { text-align: center; margin-bottom: 30px; }
+        .avatar {
+            width: 100px !important; height: 100px !important; border-radius: 50%;
+            border: 3px solid #3498db; object-fit: cover; margin: 0 auto 15px auto; display: block; background: white;
+        }
+        .user-profile h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; color: white; }
+        .user-profile p { font-size: 0.9rem; color: #bdc3c7; }
+
+        .side-menu { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+        .side-menu a {
+            color: #bdc3c7 !important;
+            padding: 12px 20px; border-radius: 10px; transition: 0.3s;
+            display: flex; align-items: center; font-size: 0.95rem; text-decoration: none !important;
+        }
+        .side-menu a:hover, .side-menu a.active { background-color: #3498db; color: white !important; transform: translateX(5px); }
+        .side-menu i { width: 25px; margin-right: 10px; text-align: center; }
+        
+        .main-content { margin-left: 280px; flex: 1; display: flex; flex-direction: column; }
+        .top-header { background: rgba(255, 255, 255, 0.95); padding: 20px 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 90; }
+        .content-body { padding: 40px; }
+
+        /* TABLE CSS */
+        .table-responsive { 
+            max-height: 75vh; overflow-y: auto; 
+            border: 1px solid #ddd; border-radius: 8px; 
+            scrollbar-width: thin;
+        }
+        .result-table { width: 100%; border-collapse: collapse; background: white; font-size: 0.9rem; }
+        .result-table th { 
+            background-color: #2c3e50; color: white; position: sticky; top: 0; 
+            padding: 15px; z-index: 5; text-align: left; 
+        }
+        .result-table td { padding: 8px 15px; border-bottom: 1px solid #eee; }
+        .result-table tr:nth-child(even) { background-color: #f8f9fa; }
+        .result-table tr:hover { background-color: #e8f6fe; }
+        .badge { 
+            padding: 5px 10px; border-radius: 4px; font-weight: bold; 
+            background: #d1ecf1; color: #0c5460; display: inline-block; min-width: 35px; text-align: center; 
+        }
+        .section-header { 
+            background-color: #dff0d8 !important; color: #3c763d; 
+            font-weight: bold; text-align: center; padding: 10px !important; 
+        }
+
+        @media (max-width: 992px) {
+            .sidebar { width: 100%; height: auto; position: relative; flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 20px; }
+            .main-content { margin-left: 0; }
+            .side-menu { display: none; }
+            .avatar { width: 50px !important; height: 50px !important; margin: 0 10px 0 0; }
+            .user-profile { display: flex; align-items: center; margin: 0; text-align: left; }
+            .user-profile p { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <img src="images/avatar.jpg" alt="Avatar" class="avatar" onerror="this.src='https://via.placeholder.com/150'">
+                <h3>Phạm Hồng Tuấn Anh</h3>
+                <p>MSSV: 231A010600</p>
+            </div>
+            <nav class="side-menu">
+                <a href="index.html"><i class="fas fa-home"></i> Trang chủ</a>
+                <a href="about.html"><i class="fas fa-user"></i> Giới thiệu</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Liên hệ</a>
+                <div style="margin: 15px 20px; border-top: 1px solid rgba(255,255,255,0.1);"></div>
+                <p style="padding: 0 20px; color: #7f8c8d; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 5px;">Học tập</p>
+                <a href="baitap20.html" class="active"><i class="fas fa-check-double"></i> KQ Bài 20</a>
+                <a href="baitap21.html"><i class="fas fa-code"></i> Giải Bài 21</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <h2><i class="fas fa-list-ol" style="color: #27ae60;"></i> Bảng đáp án 110 câu trắc nghiệm</h2>
+            </header>
+            
+            <section class="content-body">
+                <div class="card" style="width: 100%; text-align: left; padding: 0; border: none; box-shadow: none;">
+                    <div class="table-responsive">
+                        <table class="result-table">
+                            <thead>
+                                <tr><th width="10%">Câu</th><th width="15%">Đáp án</th><th>Nội dung tóm tắt</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="3" class="section-header">PHẦN 1: HTML CĂN BẢN</td></tr>
+                                <tr><td>1</td><td><span class="badge">B</span></td><td>&lt;html&gt; mở đầu tài liệu</td></tr>
+                                <tr><td>2</td><td><span class="badge">B</span></td><td>&lt;h1&gt; tiêu đề lớn nhất</td></tr>
+                                <tr><td>3</td><td><span class="badge">A</span></td><td>&lt;img&gt; thẻ đơn (không đóng)</td></tr>
+                                <tr><td>4</td><td><span class="badge">A</span></td><td>&lt;a href="..."&gt; tạo liên kết</td></tr>
+                                <tr><td>5</td><td><span class="badge">B</span></td><td>&lt;ul&gt; danh sách không thứ tự</td></tr>
+                                <tr><td>6</td><td><span class="badge">A</span></td><td>Thuộc tính ảnh: src</td></tr>
+                                <tr><td>7</td><td><span class="badge">A</span></td><td>&lt;table&gt; tạo bảng</td></tr>
+                                <tr><td>8</td><td><span class="badge">B</span></td><td>&lt;tr&gt; tạo hàng</td></tr>
+                                <tr><td>9</td><td><span class="badge">B</span></td><td>colspan gộp cột</td></tr>
+                                <tr><td>10</td><td><span class="badge">C</span></td><td>&lt;form&gt; tạo biểu mẫu</td></tr>
+                                
+                                <tr><td colspan="3" class="section-header">PHẦN 2: CSS CĂN BẢN</td></tr>
+                                <tr><td>11</td><td><span class="badge">A</span></td><td>p { ... } chọn thẻ p</td></tr>
+                                <tr><td>12</td><td><span class="badge">C</span></td><td>color: màu chữ</td></tr>
+                                <tr><td>13</td><td><span class="badge">B</span></td><td>margin: khoảng cách ngoài</td></tr>
+                                <tr><td>14</td><td><span class="badge">A</span></td><td>font-size: kích thước chữ</td></tr>
+                                <tr><td>15</td><td><span class="badge">A</span></td><td>text-align: center</td></tr>
+                                <tr><td>16</td><td><span class="badge">A</span></td><td>.example chọn class</td></tr>
+                                <tr><td>17</td><td><span class="badge">B</span></td><td>visibility: hidden (ẩn nhưng chiếm chỗ)</td></tr>
+                                <tr><td>18</td><td><span class="badge">B</span></td><td>opacity: độ trong suốt</td></tr>
+                                <tr><td>19</td><td><span class="badge">A</span></td><td>border-radius: bo góc</td></tr>
+                                <tr><td>20</td><td><span class="badge">B</span></td><td>box-shadow: tạo bóng</td></tr>
+
+                                <tr><td colspan="3" class="section-header">PHẦN 3: JAVASCRIPT CĂN BẢN</td></tr>
+                                <tr><td>21</td><td><span class="badge">B, D</span></td><td>var và let đều khai báo biến</td></tr>
+                                <tr><td>22</td><td><span class="badge">A</span></td><td>alert(): cảnh báo</td></tr>
+                                <tr><td>23</td><td><span class="badge">A</span></td><td>Array.isArray()</td></tr>
+                                <tr><td>24</td><td><span class="badge">D</span></td><td>Cả parseInt và parseFloat</td></tr>
+                                <tr><td>25</td><td><span class="badge">A</span></td><td>push(): thêm vào cuối mảng</td></tr>
+                                <tr><td>26</td><td><span class="badge">A</span></td><td>value: lấy giá trị input</td></tr>
+                                <tr><td>27</td><td><span class="badge">D</span></td><td>innerHTML và textContent</td></tr>
+                                <tr><td>28</td><td><span class="badge">A</span></td><td>addEventListener: thêm sự kiện</td></tr>
+                                <tr><td>29</td><td><span class="badge">A</span></td><td>preventDefault(): ngăn mặc định</td></tr>
+                                <tr><td>30</td><td><span class="badge">D</span></td><td>for..of và forEach</td></tr>
+
+                                <tr><td colspan="3" class="section-header">PHẦN 4: JAVASCRIPT & HTML NÂNG CAO</td></tr>
+                                <tr><td>31</td><td><span class="badge">B</span></td><td>setTimeout(): chạy sau thời gian</td></tr>
+                                <tr><td>32</td><td><span class="badge">A</span></td><td>startsWith(): kiểm tra đầu chuỗi</td></tr>
+                                <tr><td>33</td><td><span class="badge">A</span></td><td>JSON.parse(): chuỗi sang object</td></tr>
+                                <tr><td>34</td><td><span class="badge">A</span></td><td>pop(): xóa cuối mảng</td></tr>
+                                <tr><td>35</td><td><span class="badge">D</span></td><td>Kiểm tra undefined</td></tr>
+                                <tr><td>36</td><td><span class="badge">B</span></td><td>&lt;meta&gt; nằm trong &lt;head&gt;</td></tr>
+                                <tr><td>37</td><td><span class="badge">A</span></td><td>&lt;video&gt; chèn clip</td></tr>
+                                <tr><td>38</td><td><span class="badge">C</span></td><td>&lt;label&gt; liên kết qua id</td></tr>
+                                <tr><td>39</td><td><span class="badge">C</span></td><td>&lt;details&gt; có thể gấp lại</td></tr>
+                                <tr><td>40</td><td><span class="badge">A</span></td><td>&lt;iframe&gt; nhúng trang khác</td></tr>
+
+                                <tr><td colspan="3" class="section-header">PHẦN 5: TỔNG HỢP CSS & JS</td></tr>
+                                <tr><td>41</td><td><span class="badge">A</span></td><td>display: none (biến mất hoàn toàn)</td></tr>
+                                <tr><td>42</td><td><span class="badge">A</span></td><td>transition: hiệu ứng chuyển</td></tr>
+                                <tr><td>43</td><td><span class="badge">A</span></td><td>transparent: trong suốt</td></tr>
+                                <tr><td>44</td><td><span class="badge">A</span></td><td>letter-spacing: khoảng cách chữ</td></tr>
+                                <tr><td>45</td><td><span class="badge">B</span></td><td>filter: blur() làm mờ</td></tr>
+                                <tr><td>46</td><td><span class="badge">A</span></td><td>new Promise(...)</td></tr>
+                                <tr><td>47</td><td><span class="badge">B</span></td><td>JSON.stringify(): object sang chuỗi</td></tr>
+                                <tr><td>48</td><td><span class="badge">D</span></td><td>Kiểm tra object (lưu ý null)</td></tr>
+                                <tr><td>49</td><td><span class="badge">B</span></td><td>shift(): lấy phần tử đầu</td></tr>
+                                <tr><td>50</td><td><span class="badge">D</span></td><td>async/await và Promise</td></tr>
+
+                                <tr><td colspan="3" class="section-header">PHẦN 6: ÔN TẬP HTML</td></tr>
+                                <tr><td>51</td><td><span class="badge">B</span></td><td>&lt;p&gt; đoạn văn</td></tr>
+                                <tr><td>52</td><td><span class="badge">A</span></td><td>&lt;img&gt; chèn ảnh</td></tr>
+                                <tr><td>53</td><td><span class="badge">B</span></td><td>src: đường dẫn ảnh</td></tr>
+                                <tr><td>54</td><td><span class="badge">A</span></td><td>&lt;a&gt; tạo liên kết</td></tr>
+                                <tr><td>55</td><td><span class="badge">B</span></td><td>href: đích đến</td></tr>
+                                <tr><td>56</td><td><span class="badge">B</span></td><td>&lt;ul&gt; danh sách không thứ tự</td></tr>
+                                <tr><td>57</td><td><span class="badge">A</span></td><td>&lt;ol&gt; danh sách có thứ tự</td></tr>
+                                <tr><td>58</td><td><span class="badge">A</span></td><td>&lt;input&gt; ô nhập liệu</td></tr>
+                                <tr><td>59</td><td><span class="badge">A</span></td><td>type: kiểu ô nhập</td></tr>
+                                <tr><td>60</td><td><span class="badge">A</span></td><td>&lt;button&gt; nút bấm</td></tr>
+
+                                <tr><td colspan="3" class="section-header">PHẦN 7: CSS LAYOUT</td></tr>
+                                <tr><td>61</td><td><span class="badge">A</span></td><td>color: màu văn bản</td></tr>
+                                <tr><td>62</td><td><span class="badge">A</span></td><td>font-size: kích cỡ chữ</td></tr>
+                                <tr><td>63</td><td><span class="badge">B</span></td><td>text-align: căn lề</td></tr>
+                                <tr><td>64</td><td><span class="badge">C</span></td><td>background-color: màu nền</td></tr>
+                                <tr><td>65</td><td><span class="badge">A</span></td><td>letter-spacing: giãn chữ</td></tr>
+                                <tr><td>66</td><td><span class="badge">A</span></td><td>line-height: giãn dòng</td></tr>
+                                <tr><td>67</td><td><span class="badge">A</span></td><td>font-family: phông chữ</td></tr>
+                                <tr><td>68</td><td><span class="badge">A</span></td><td>border: đường viền</td></tr>
+                                <tr><td>69</td><td><span class="badge">A</span></td><td>width: chiều rộng</td></tr>
+                                <tr><td>70</td><td><span class="badge">A</span></td><td>height: chiều cao</td></tr>
+
+                                <tr><td colspan="3" class="section-header">PHẦN 8: THAO TÁC DOM</td></tr>
+                                <tr><td>71</td><td><span class="badge">A</span></td><td>&lt;script&gt; chèn JS</td></tr>
+                                <tr><td>72</td><td><span class="badge">A</span></td><td>alert()</td></tr>
+                                <tr><td>73</td><td><span class="badge">A</span></td><td>confirm()</td></tr>
+                                <tr><td>74</td><td><span class="badge">A</span></td><td>prompt()</td></tr>
+                                <tr><td>75</td><td><span class="badge">A</span></td><td>document.write()</td></tr>
+                                <tr><td>76</td><td><span class="badge">A</span></td><td>innerHTML: đổi nội dung HTML</td></tr>
+                                <tr><td>77</td><td><span class="badge">A</span></td><td>setAttribute(): đổi thuộc tính</td></tr>
+                                <tr><td>78</td><td><span class="badge">A</span></td><td>addEventListener()</td></tr>
+                                <tr><td>79</td><td><span class="badge">A</span></td><td>function name() {}</td></tr>
+                                <tr><td>80</td><td><span class="badge">A</span></td><td>name(): gọi hàm</td></tr>
+
+                                <tr><td colspan="3" class="section-header">PHẦN 9: JS STYLE & CLASS</td></tr>
+                                <tr><td>81</td><td><span class="badge">A</span></td><td>style.backgroundColor</td></tr>
+                                <tr><td>82</td><td><span class="badge">A</span></td><td>style.display = "none"</td></tr>
+                                <tr><td>83</td><td><span class="badge">A</span></td><td>classList.add()</td></tr>
+                                <tr><td>84</td><td><span class="badge">A</span></td><td>classList.remove()</td></tr>
+                                <tr><td>85</td><td><span class="badge">A</span></td><td>classList.contains()</td></tr>
+                                <tr><td>86</td><td><span class="badge">A</span></td><td>onmouseover: di chuột vào</td></tr>
+                                <tr><td>87</td><td><span class="badge">A</span></td><td>style.fontFamily</td></tr>
+                                <tr><td>88</td><td><span class="badge">A</span></td><td>style.fontSize</td></tr>
+                                <tr><td>89</td><td><span class="badge">A</span></td><td>style.color</td></tr>
+                                <tr><td>90</td><td><span class="badge">A</span></td><td>style.border</td></tr>
+
+                                <tr><td colspan="3" class="section-header">PHẦN 10: TỔNG HỢP CUỐI KỲ</td></tr>
+                                <tr><td>91</td><td><span class="badge">A</span></td><td>CSS inline cho body background</td></tr>
+                                <tr><td>92</td><td><span class="badge">A</span></td><td>target="_blank"</td></tr>
+                                <tr><td>93</td><td><span class="badge">A</span></td><td>&lt;ol start="5"&gt;</td></tr>
+                                <tr><td>94</td><td><span class="badge">A</span></td><td>input type="number"</td></tr>
+                                <tr><td>95</td><td><span class="badge">A</span></td><td>input type="email"</td></tr>
+                                <tr><td>96</td><td><span class="badge">A</span></td><td>input type="password"</td></tr>
+                                <tr><td>97</td><td><span class="badge badge-multi">A, B</span></td><td>input type="submit"</td></tr>
+                                <tr><td>98</td><td><span class="badge badge-multi">A, B</span></td><td>input type="reset"</td></tr>
+                                <tr><td>99</td><td><span class="badge">A</span></td><td>&lt;textarea&gt; đa dòng</td></tr>
+                                <tr><td>100</td><td><span class="badge">A</span></td><td>else (câu điều kiện)</td></tr>
+                                <tr><td>101</td><td><span class="badge">A</span></td><td>p { ... }</td></tr>
+                                <tr><td>102</td><td><span class="badge">C</span></td><td>color</td></tr>
+                                <tr><td>103</td><td><span class="badge">B</span></td><td>margin</td></tr>
+                                <tr><td>104</td><td><span class="badge">A</span></td><td>font-size</td></tr>
+                                <tr><td>105</td><td><span class="badge">A</span></td><td>center</td></tr>
+                                <tr><td>106</td><td><span class="badge">A</span></td><td>.example</td></tr>
+                                <tr><td>107</td><td><span class="badge">B</span></td><td>hidden (visibility)</td></tr>
+                                <tr><td>108</td><td><span class="badge">B</span></td><td>opacity</td></tr>
+                                <tr><td>109</td><td><span class="badge">A</span></td><td>border-radius</td></tr>
+                                <tr><td>110</td><td><span class="badge">B</span></td><td>box-shadow</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

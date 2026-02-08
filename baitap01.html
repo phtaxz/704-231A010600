@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập 1: Image Carousel</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f4f4f4; flex-direction: column;}
+        
+        .carousel-container {
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden; /* Ẩn phần hình ảnh tràn ra ngoài */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .carousel-slide {
+            display: flex;
+            width: 100%;
+            height: 400px;
+            transition: transform 0.5s ease-in-out; /* Hiệu ứng trượt mượt mà */
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0; /* Đảm bảo ảnh không bị co lại */
+        }
+
+        /* Nút điều hướng */
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+        }
+        .btn:hover { background: rgba(0,0,0,0.8); }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* Giải thích Logic hiển thị bên dưới */
+        .explanation { margin-top: 20px; max-width: 800px; background: white; padding: 20px; border-radius: 8px; }
+
+        @media (max-width: 768px) {
+            .carousel-slide { height: 250px; } /* Responsive chiều cao */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carousel-container">
+        <div class="carousel-slide" id="slide">
+            <img src="https://picsum.photos/id/1015/800/400" alt="Img 1">
+            <img src="https://picsum.photos/id/1016/800/400" alt="Img 2">
+            <img src="https://picsum.photos/id/1018/800/400" alt="Img 3">
+            <img src="https://picsum.photos/id/1019/800/400" alt="Img 4">
+            <img src="https://picsum.photos/id/1020/800/400" alt="Img 5">
+            <img src="https://picsum.photos/id/1021/800/400" alt="Img 6">
+        </div>
+        <button class="btn prev" id="prevBtn">&#10094;</button>
+        <button class="btn next" id="nextBtn">&#10095;</button>
+    </div>
+
+    <div class="explanation">
+        <h3>Logic tư duy lập trình:</h3>
+        <ul>
+            <li><strong>State:</strong> Sử dụng biến <code>counter</code> để theo dõi ảnh hiện tại.</li>
+            <li><strong>DOM:</strong> Truy xuất chiều rộng của ảnh (`clientWidth`) để biết cần dịch chuyển bao nhiêu pixel.</li>
+            <li><strong>Transition:</strong> Dùng `transform: translateX()` kết hợp CSS `transition` để tạo hiệu ứng trượt.</li>
+            <li><strong>Xử lý biên:</strong> Khi bấm Next ở ảnh cuối cùng, code sẽ reset `counter` về 0. Ngược lại với nút Prev.</li>
+            <li><strong>Tự động:</strong> Dùng `setInterval` gọi hàm `nextSlide` mỗi 3s. Khi người dùng click nút, clear interval và set lại để tránh xung đột.</li>
+        </ul>
+    </div>
+
+    <script>
+        const slide = document.getElementById('slide');
+        const images = document.querySelectorAll('.carousel-slide img');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let counter = 0;
+        const totalImages = images.length;
+        let slideInterval;
+
+        function updateSlide() {
+            // Dịch chuyển khung hình: counter * 100% chiều rộng
+            slide.style.transform = `translateX(${-counter * 100}%)`;
+        }
+
+        function nextSlide() {
+            counter++;
+            if (counter >= totalImages) {
+                counter = 0; // Quay về đầu
+            }
+            updateSlide();
+        }
+
+        function prevSlide() {
+            counter--;
+            if (counter < 0) {
+                counter = totalImages - 1; // Quay về cuối
+            }
+            updateSlide();
+        }
+
+        // Sự kiện click
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetTimer(); // Reset bộ đếm tự động
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetTimer();
+        });
+
+        // Tự động chạy
+        function startTimer() {
+            slideInterval = setInterval(nextSlide, 3000);
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startTimer();
+        }
+
+        // Khởi chạy
+        startTimer();
+    </script>
+</body>
+</html>

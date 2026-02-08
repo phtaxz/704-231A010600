@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập 3: Game Đoán Số</title>
+    <style>
+        body { background: #2c3e50; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; height: 100vh; justify-content: center; }
+        .game-box { background: #34495e; padding: 30px; border-radius: 10px; text-align: center; width: 300px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        
+        input { padding: 10px; width: 60%; margin: 10px 0; border-radius: 5px; border: none; text-align: center; }
+        button { padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #c0392b; }
+        
+        #message { margin-top: 15px; font-weight: bold; min-height: 20px; }
+        .history { font-size: 0.8em; color: #bdc3c7; margin-top: 10px; }
+
+        /* Hiệu ứng pháo hoa đơn giản bằng CSS */
+        @keyframes firework {
+            0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0px #f1c40f; }
+            100% { transform: scale(1.5); opacity: 0; box-shadow: 0 0 0 50px #f1c40f; }
+        }
+        .success-anim {
+            animation: firework 1s ease-out infinite;
+            background: #27ae60 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-box" id="gameBox">
+        <h2>Đoán số bí mật (1-100)</h2>
+        <p>Nhập số bạn đoán:</p>
+        <input type="number" id="guessInput" min="1" max="100">
+        <br>
+        <button onclick="checkGuess()">Đoán ngay</button>
+        <button onclick="resetGame()" style="background:#95a5a6; display:none;" id="resetBtn">Chơi lại</button>
+        
+        <div id="message"></div>
+        <p class="history">Số lần thử: <span id="attempts">0</span></p>
+    </div>
+
+    <div style="margin-top:20px; max-width: 400px; font-size: 0.9rem;">
+        <strong>Logic tư duy:</strong>
+        <p>- Dùng <code>Math.floor(Math.random() * 100) + 1</code> để tạo số ngẫu nhiên.</p>
+        <p>- Kiểm tra Input: Phải là số và nằm trong khoảng 1-100.</p>
+        <p>- So sánh: Dùng cấu trúc `if-else` (Lớn hơn, nhỏ hơn, Bằng).</p>
+        <p>- Khi thắng: Thêm class CSS animation vào hộp game để tạo hiệu ứng.</p>
+    </div>
+
+    <script>
+        let secretNumber;
+        let attempts = 0;
+        const msg = document.getElementById('message');
+        const gameBox = document.getElementById('gameBox');
+        const resetBtn = document.getElementById('resetBtn');
+        const attemptDisplay = document.getElementById('attempts');
+
+        function initGame() {
+            secretNumber = Math.floor(Math.random() * 100) + 1;
+            attempts = 0;
+            attemptDisplay.innerText = attempts;
+            msg.innerText = "";
+            msg.style.color = "white";
+            document.getElementById('guessInput').value = '';
+            gameBox.classList.remove('success-anim');
+            resetBtn.style.display = 'none';
+            document.getElementById('guessInput').disabled = false;
+            console.log("Cheat code: " + secretNumber); // Để debug
+        }
+
+        function checkGuess() {
+            const userVal = parseInt(document.getElementById('guessInput').value);
+
+            if (isNaN(userVal) || userVal < 1 || userVal > 100) {
+                msg.innerText = "Vui lòng nhập số từ 1 đến 100!";
+                msg.style.color = "#e74c3c";
+                return;
+            }
+
+            attempts++;
+            attemptDisplay.innerText = attempts;
+
+            if (userVal === secretNumber) {
+                msg.innerText = `CHÚC MỪNG! BẠN ĐOÁN ĐÚNG SỐ ${secretNumber}`;
+                msg.style.color = "#f1c40f";
+                gameBox.classList.add('success-anim');
+                document.getElementById('guessInput').disabled = true;
+                resetBtn.style.display = 'inline-block';
+            } else if (userVal < secretNumber) {
+                msg.innerText = "Thấp quá! Thử số lớn hơn.";
+                msg.style.color = "#e67e22";
+            } else {
+                msg.innerText = "Cao quá! Thử số nhỏ hơn.";
+                msg.style.color = "#e67e22";
+            }
+        }
+
+        function resetGame() {
+            initGame();
+        }
+
+        // Khởi tạo game khi load trang
+        initGame();
+    </script>
+</body>
+</html>
